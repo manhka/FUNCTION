@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>change temperator</title>
+</head>
+<body>
+<h1>Temperature Converter</h1>
+<h3>Type a value in the Fahrenheit field to convert the value</h3>
+Fahrenheit <input type="text" id="f">
+<button onclick="ChangeTEMP()">click</button>
+<br>
+<b id="render"></b>
+<script>
+console.log('f==',F)
+    function ChangeTEMP(){
+    let F= parseFloat(document.getElementById('f').value)
+      let C=(F-32)/1.8
+        document.getElementById('render').innerHTML= 'Celcius is:'+C; }
+</script>
+</body>
+</html>

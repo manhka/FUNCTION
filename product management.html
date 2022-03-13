@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>product management</title>
+</head>
+<body>
+<h1 class="text-animation">THE PATICIPANTS IN MY FAMILY</h1>
+
+<form action="" style="width: 500px ;height: 600px ;background-color: orange" >
+    <input placeholder="add others"  type="text" id="create" style="height: 35px; width: 400px; background-color: aquamarine">
+    <button onclick="addNew()" style="height: 35px; background-color: aquamarine">create</button>
+    <br>
+    <input placeholder="who you wanna find" type="text" id="search" style="background-color: cyan;width:400px;height: 35px ">
+    <button onclick="findPaticipant()"style="background-color: cyan ;height: 35px">search</button><b id="inform"></b><br>
+    <table border="1" style="width: 500px ;height: 500px">
+        <tr>
+            <th>STT</th>
+            <th colspan="3">NAME</th>
+        </tr>
+        <tbody id="createTb"></tbody>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    let paticipant=['manh','tien','hong','nhien']
+    function showListPP(){
+        let drawTB=''
+        for (let i = 0; i < paticipant.length; i++) {
+            drawTB+=`<tr>
+                       <td> ${i+1} </td> <td> ${paticipant[i]}</td>
+                       <td><button onclick="Edit(${i})">edit</button> <input type="text"id="edit"> </td>
+                       <td><button onclick="Delete(${i})">delete</button></td>
+                     </tr>`
+
+        }document.getElementById('createTb').innerHTML=drawTB
+
+    }showListPP()
+    function Delete(index){
+        paticipant.splice(index,1)
+        showListPP()
+    }
+    function addNew(){
+        let newPaticipant=document.getElementById('create').value;
+        paticipant.push(newPaticipant)
+        showListPP()
+    }
+    function Edit(index){
+        let edit=document.getElementById('edit').value;
+        if (edit===''){
+            console.log('edit====',edit)
+            paticipant.splice(index,0,)
+        }
+        else{paticipant.splice(index,1,edit)}
+
+        showListPP()
+    }
+    function findPaticipant(){
+        let search=document.getElementById('search').value;
+        let k=search.toLowerCase()
+        console.log('search====',search.toLowerCase())
+        let drawTB=''
+        for (let i = 0; i < paticipant.length; i++) {
+            let m=paticipant[i].toLowerCase()
+        if (k===m){
+            drawTB+=`<tr><td>${i+1}</td>
+                          <td>${paticipant[i]}</td>
+                          <td><button onclick="Edit(${i})">edit</button> <input type="text"id="edit"> </td>
+                    <td><button onclick="Delete(${i})">delete</button></td>
+                     </tr>`
+            document.getElementById('createTb').innerHTML=drawTB
+        document.getElementById('search').value=''}
+        else{
+            document.getElementById('inform').innerHTML='we dont have this name!!!'
+        }
+    }}
+</script>

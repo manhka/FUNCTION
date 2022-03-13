@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>checking prime number</title>
+</head>
+<body>
+<input type="number" id="num">
+<button onclick="checkPrime()">check</button>
+<b id="count"></b>
+<script>
+    function checkPrime(){
+        let count=0
+        let x=parseFloat(document.getElementById('num').value);
+        for (let i = 2; count<x; i++) {
+            let check=true;
+            for (let j = 2; j <i ; j++) {
+                if (i%j===0){
+                    check=false
+                    continue
+                }
+            }if (check){
+                count++
+                document.write('the prime number is :'+i+'<br>')
+            }
+        }
+    }
+</script>
+</body>
+</html>
